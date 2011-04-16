@@ -18,7 +18,7 @@ void showMenu (struct lista_livro **head){
 
         scanf ("%d", &x);
 
-        struct lista_livro *aux = head;
+        struct lista_livro *aux = *head;
         selecionaOp (aux, x);
 
     } while ( x!=0 );
@@ -34,7 +34,7 @@ void selecionaOp ( struct lista_livro **head, int x){
 
     switch (x){
 
-        case 1 : cadastraLivro(head) ; break ;
+        case 1 : cadastraLivro(&head) ; break ;
 
         case 2 : printf ("\n2");break;
 

@@ -4,9 +4,9 @@
 #include "estrutura.h"
 
 
-void insereEstruturaLivro (TLivro *l);
+void insereEstruturaLivro (struct livro *l);
 
-void imprimeEstrutura (TLivro *l);
+void imprimeEstrutura (struct livro l);
 
 void insereLista1 (struct lista_livro **head, struct livro l);
 

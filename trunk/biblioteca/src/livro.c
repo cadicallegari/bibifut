@@ -3,7 +3,7 @@
 #include <string.h>
 #include "livro.h"
 
-void insereEstruturaLivro (TLivro *l){
+void insereEstruturaLivro (struct livro *l){
 
 
     printf ("Nome do livro: \n");
@@ -29,17 +29,17 @@ void insereEstruturaLivro (TLivro *l){
 }
 
 
-void imprimeEstrutura (TLivro *l){
+void imprimeEstrutura (struct livro l){
 
-    printf ("Titulo:                           %s\n", l->titulo);
-    printf ("Autor:                            %s\n", l->autor);
-    printf ("Ano:                              %d\n", l->ano);
-    printf ("Numero de exemplares:             %d\n", l->numex);
-    printf ("Area:                             %s\n", l->area);
+    printf ("Titulo:                           %s\n", l.titulo);
+    printf ("Autor:                            %s\n", l.autor);
+    printf ("Ano:                              %d\n", l.ano);
+    printf ("Numero de exemplares:             %d\n", l.numex);
+    printf ("Area:                             %s\n", l.area);
 
 }
 
-void insereLista1 (struct lista_livro **head, TLivro l) {
+void insereLista1 (struct lista_livro **head, struct livro l) {
 
     struct lista_livro *novo;
 
@@ -63,7 +63,7 @@ void insereLista1 (struct lista_livro **head, TLivro l) {
         novo->next = *head;
         *head = novo;
     }
-
+    printf ("%d", (*head)->dado1.ano);
 
 }
 
@@ -121,7 +121,7 @@ void gravaArquivo (char nomeArq[50], struct lista_livro *head){
 
     struct lista_livro *aux;
 
-    TLivro aux2;
+   struct livro aux2;
 
     FILE *fp = fopen (nomeArq, "w+b");
 
@@ -143,7 +143,7 @@ void gravaArquivo (char nomeArq[50], struct lista_livro *head){
             strcpy (aux2.area, aux->dado1.area);
 
 
-            fwrite (&aux2, sizeof (TLivro), 1, fp);
+            fwrite (&aux2, sizeof (struct livro), 1, fp);
 
         }
 
@@ -161,14 +161,14 @@ void gravaArquivo (char nomeArq[50], struct lista_livro *head){
 
 void imprimeArquivo (char nomeArq[50]){
 
-    TLivro aux;
+    struct livro aux;
 
     FILE *fp = fopen (nomeArq, "rb");
 
 
     while( !feof(fp) ){
 
-        fread (&aux, sizeof (TLivro), 1, fp);
+        fread (&aux, sizeof (struct livro), 1, fp);
         printf ("Titulo:                %s\n", aux.titulo);
         printf ("Autor:                 %s\n", aux.autor);
         printf ("Ano:                   %d\n", aux.ano);
