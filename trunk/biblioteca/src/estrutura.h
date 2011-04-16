@@ -38,7 +38,7 @@ typedef struct lista_livro {
     int status_livro;
     struct lista_livro *next;
 
-}; TLista1;
+} TLista1;
 
 
 
@@ -48,7 +48,7 @@ typedef struct lista_emprestimo {
     struct lista_emprestimo *next;
     int status_emprestimo;
 
-}; TLista2;
+} TLista2;
 
 
 

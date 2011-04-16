@@ -2,6 +2,8 @@
 # include <stdio_ext.h>
 #include <string.h>
 #include "livro.h"
+#include <stdio.h>
+
 
 void insereEstruturaLivro (struct livro *l){
 
@@ -39,7 +41,7 @@ void imprimeEstrutura (struct livro l){
 
 }
 
-void insereLista1 (struct lista_livro **head, struct livro l) {
+struct lista_livro* insereLista1 (struct lista_livro **head, struct livro l) {
 
     struct lista_livro *novo;
 
@@ -63,57 +65,45 @@ void insereLista1 (struct lista_livro **head, struct livro l) {
         novo->next = *head;
         *head = novo;
     }
-    printf ("%d", (*head)->dado1.ano);
 
+    return *head;
 }
 
 
 void removeLivro (struct lista_livro **head, char nomeLivro[50]){
 
     struct lista_livro *aux;
-
     aux = *head;
 
     while (aux != NULL){
 
         if ( strcmp (aux->dado1.titulo, nomeLivro ) == 0) {
-
             aux->status_livro = -1;
             break;
-
         }
 
         aux = aux->next;
-
-
     }
-
 }
 
 
-void imprimeListaLivros (struct lista_livro *head){
+void imprimeListaLivros (struct lista_livro **head){
 
     struct lista_livro *aux;
-
-    aux = head;
+    aux = *head;
 
     while (aux != NULL) {
 
         if ( aux->status_livro != -1){
-
             printf ("Titulo:               %s\n", aux->dado1.titulo);
             printf ("Autor:                %s\n", aux->dado1.autor);
             printf ("Ano:                  %d\n", aux->dado1.ano);
             printf ("Numero de Exemplares: %d\n", aux->dado1.numex);
             printf ("Area                  %s\n", aux->dado1.area);
             printf ("\n__________________________\n");
-
         }
-
         aux = aux->next;
-
     }
-
 }
 
 
@@ -197,26 +187,27 @@ void leArquivo (char nomeArq[50], struct lista_livro **head){
     x = fread (&aux2, sizeof (struct livro), 1, fp);
 
     if ( x == 0){
-        return 0;
+        return;
     }
     else {
 
         while ( !feof(fp) ){
             fread (&aux2, sizeof (struct livro),1 , fp);
-            insereLista1(&head, aux2);
+            *head = insereLista1(head, aux2);
         }
     }
     fclose (fp);
 }
 
 
-void cadastraLivro (struct lista_livro **head){
+struct lista_livro* cadastraLivro (struct lista_livro **head){
 
     struct livro teste;
 
     insereEstruturaLivro (&teste);
-    insereLista1(&head, teste);
+    *head = insereLista1(head, teste);
 
+    return *head;
 
 }
 
