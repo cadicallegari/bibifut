@@ -5,20 +5,21 @@
 
 int main()
 {
-
+	char nomeArq[50] = "teste.dat";
 	struct lista_livro *head = NULL;
+	struct lista_livro *cabeca = NULL;
 //
-//	TLivro teste;
+	struct livro teste;
 //
-//	int i;
+	int i;
 
 
-	leArquivo("teste.dat", &head);
+	leArquivo(nomeArq, &head);
 	showMenu (&head);
-	gravaArquivo("teste.dat", head);
+	gravaArquivo(nomeArq, head);
 
 
-//menu();
+
 
 
 //
@@ -32,13 +33,15 @@ int main()
 //
 //    }
 
+
+    //imprimeEstrutura(teste);
    // removeLivro(&cabeca,"futebol");
-//    imprimeListaLivros (cabeca);
+   // imprimeListaLivros (cabeca);
 
-    //gravaArquivo(nomeArq, cabeca);
+//    gravaArquivo(nomeArq, cabeca);
 
 
-    //leArquivo(nomeArq, &cabeca);
+//    leArquivo(nomeArq, &cabeca);
 
 
     //insereEstruturaLivro(&teste);
@@ -47,7 +50,7 @@ int main()
 
     //aux = cabeca;
 
-    //imprimeListaLivros (aux);
+//    imprimeListaLivros (cabeca);
 
 
     //imprimeArquivo (nomeArq);
@@ -63,7 +66,7 @@ int main()
 
     imprimeListaLivros (cabeca);
 */
-    //imprimeEstrutura(teste);
+
    // struct lista_emprestimo *head = NULL;
     //char nomeArq[50] = "teste.dat";
 
