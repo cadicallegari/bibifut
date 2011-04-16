@@ -2,9 +2,13 @@
 #define MENU_H_INCLUDED
 
 
+#include "estrutura.h"
+
+
+
 void showMenu();
 
-void selecionaOp (int x);
+void selecionaOp ( struct lista_livro **head, int x);
 
-void menu (struct lista_livro **head);
+
 #endif // MENU_H_INCLUDED

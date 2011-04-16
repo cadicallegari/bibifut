@@ -29,13 +29,13 @@ void insereEstruturaLivro (TLivro *l){
 }
 
 
-void imprimeEstrutura (TLivro l){
+void imprimeEstrutura (TLivro *l){
 
-    printf ("Titulo:                           %s\n", l.titulo);
-    printf ("Autor:                            %s\n", l.autor);
-    printf ("Ano:                              %d\n", l.ano);
-    printf ("Numero de exemplares:             %d\n", l.numex);
-    printf ("Area:                             %s\n", l.area);
+    printf ("Titulo:                           %s\n", l->titulo);
+    printf ("Autor:                            %s\n", l->autor);
+    printf ("Ano:                              %d\n", l->ano);
+    printf ("Numero de exemplares:             %d\n", l->numex);
+    printf ("Area:                             %s\n", l->area);
 
 }
 
@@ -189,44 +189,33 @@ void leArquivo (char nomeArq[50], struct lista_livro **head){
 
     int x;
 
-    struct lista_livro *novo;
+   // struct lista_livro *novo;
 
-    TLivro aux2;
-
+    struct livro aux2;
     FILE* fp = fopen (nomeArq, "w+b");
 
-    x = fread (&aux2, sizeof (TLivro), 1, fp);
+    x = fread (&aux2, sizeof (struct livro), 1, fp);
 
     if ( x == 0){
-
         return 0;
-
     }
-
-
     else {
 
         while ( !feof(fp) ){
-
-            fread (&aux2, sizeof (TLivro),1 , fp);
-
+            fread (&aux2, sizeof (struct livro),1 , fp);
             insereLista1(&head, aux2);
-
         }
-
     }
-
     fclose (fp);
 }
 
 
-void cadastraLivro (){
+void cadastraLivro (struct lista_livro **head){
 
-    TLivro teste;
-    struct lista_livro *cabeca;
+    struct livro teste;
 
     insereEstruturaLivro (&teste);
-    insereLista1(&cabeca, teste);
+    insereLista1(&head, teste);
 
 
 }
