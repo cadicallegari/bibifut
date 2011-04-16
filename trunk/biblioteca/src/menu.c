@@ -2,7 +2,7 @@
 #include "estrutura.h"
 #include "livro.h"
 
-void showMenu (){
+void showMenu (struct lista_livro **head){
 
     int x;
 
@@ -18,7 +18,8 @@ void showMenu (){
 
         scanf ("%d", &x);
 
-        selecionaOp (x);
+        struct lista_livro *aux = head;
+        selecionaOp (aux, x);
 
     } while ( x!=0 );
 
@@ -28,16 +29,16 @@ void showMenu (){
 }
 
 
-void selecionaOp (int x){
+void selecionaOp ( struct lista_livro **head, int x){
 
 
     switch (x){
 
-        case 1 : cadastraLivro() ; break ;
+        case 1 : cadastraLivro(head) ; break ;
 
         case 2 : printf ("\n2");break;
 
-        case 3 : printf ("\n3");break;
+        case 3 : imprimeListaLivros(head) ;break;
 
         case 4 : printf ("\n4");break;
 
@@ -51,11 +52,7 @@ void selecionaOp (int x){
 
 }
 
-void menu (struct lista_livro **head){
 
-
-
-}
 
 
 }

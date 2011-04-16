@@ -6,29 +6,34 @@
 int main()
 {
 
-struct lista_livro *head = NULL;
+	struct lista_livro *head = NULL;
+//
+//	TLivro teste;
+//
+//	int i;
 
-leArquivo("teste.dat", &head);
-menu (&head);
-gravaArquivo("teste.dat", head);
+
+	leArquivo("teste.dat", &head);
+	showMenu (&head);
+	gravaArquivo("teste.dat", head);
 
 
 //menu();
 
 
-
-   /* for (i = 0; i < 2; i++){
-
-        insereEstruturaLivro(&teste);
-
-        insereLista1(&cabeca, teste);
-
-
-
-    }*/
+//
+//    for (i = 0; i < 2; i++){
+//
+//        insereEstruturaLivro(&teste);
+//
+//        insereLista1(&cabeca, teste);
+//
+//
+//
+//    }
 
    // removeLivro(&cabeca,"futebol");
-    //imprimeListaLivros (cabeca);
+//    imprimeListaLivros (cabeca);
 
     //gravaArquivo(nomeArq, cabeca);
 

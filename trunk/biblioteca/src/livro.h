@@ -6,9 +6,9 @@
 
 void insereEstruturaLivro (TLivro *l);
 
-void imprimeEstrutura (TLivro l);
+void imprimeEstrutura (TLivro *l);
 
-void insereLista1 (struct lista_livro **head, TLivro l);
+void insereLista1 (struct lista_livro **head, struct livro l);
 
 void removeLivro (struct lista_livro **head, char nomeLivro[50]);
 
@@ -20,6 +20,6 @@ void imprimeArquivo (char nomeArq[50]);
 
 void leArquivo (char nomeArq[50], struct lista_livro **head);
 
-void cadastraLivro ();
+void cadastraLivro (struct lista_livro **head);
 
 #endif // LIVRO_H_INCLUDED
